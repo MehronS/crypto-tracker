@@ -121,10 +121,15 @@ const CryptoDetails = () => {
         defaultValue="7d"
         className="select-timeperiod"
         placeholder="Select Time Period"
-        onChange={(value) => setTimePeriod(value)}
+        onChange={(value) => {
+          console.log(value);
+          setTimePeriod(value);
+        }}
       >
         {time.map((time) => (
-          <Option key={time}>{time}</Option>
+          <Option key={time} value={time}>
+            {time}
+          </Option>
         ))}
       </Select>
       <LineChart
