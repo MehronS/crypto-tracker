@@ -3,6 +3,7 @@ import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../services/cryptoAPI";
+import { LoadingSpinner } from "../components";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -18,7 +19,7 @@ const News = ({ simplified }) => {
   const demoImage =
     "https://www.citypng.com/public/uploads/preview/-51614362984cgn3he2gom.png";
 
-  if (isFetching) return `Loading...`;
+  if (isFetching) return <LoadingSpinner />;
   return (
     <Row gutter={[24, 24]}>
       {!simplified && (

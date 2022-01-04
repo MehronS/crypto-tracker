@@ -3,6 +3,7 @@ import HTMLReactParser from "html-react-parser";
 import { useParams } from "react-router-dom";
 import millify from "millify";
 import { Col, Row, Typography, Select } from "antd";
+import { LoadingSpinner } from "../components";
 import {
   MoneyCollectOutlined,
   DollarCircleOutlined,
@@ -104,7 +105,7 @@ const CryptoDetails = () => {
     },
   ];
 
-  if (isFetching) return `Loading...`;
+  if (isFetching) return <LoadingSpinner />;
 
   return (
     <Col className="coin-detail-container">
@@ -121,10 +122,7 @@ const CryptoDetails = () => {
         defaultValue="7d"
         className="select-timeperiod"
         placeholder="Select Time Period"
-        onChange={(value) => {
-          console.log(value);
-          setTimePeriod(value);
-        }}
+        onChange={(value) => setTimePeriod(value)}
       >
         {time.map((time) => (
           <Option key={time} value={time}>
