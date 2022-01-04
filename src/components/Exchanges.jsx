@@ -2,9 +2,12 @@ import React from "react";
 import millify from "millify";
 import { Collapse, Row, Col, Typography, Avatar } from "antd";
 import HTMLReactParser from "html-react-parser";
-
-import { useGetExchangesQuery } from "../services/cryptoApi";
-import Loader from "./Loader";
+import { LoadingSpinner } from ".";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+  useGetExchangesQuery,
+} from "../services/cryptoAPI";
 
 const { Text } = Typography;
 const { Panel } = Collapse;
@@ -13,16 +16,17 @@ const Exchanges = () => {
   const { data, isFetching } = useGetExchangesQuery();
   const exchangesList = data?.data?.exchanges;
   // Exchanges are paid only. Set up the component but moving on without implementation
-  if (isFetching) return <Loader />;
+  if (isFetching) return <LoadingSpinner />;
 
   return (
     <>
-      <Row>
+      {/* <Row>
         <Col span={6}>Exchanges</Col>
         <Col span={6}>24h Trade Volume</Col>
         <Col span={6}>Markets</Col>
         <Col span={6}>Change</Col>
-      </Row>
+      </Row> */}
+      <Col style={{ textAlign: `center` }}>Paid API - Wont be implemented</Col>
       <Row>
         {/* {exchangesList.map((exchange) => (
           <Col span={24}>
